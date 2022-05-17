@@ -39,27 +39,33 @@
                     name="target5kpaceDown" /></label></div>
         <div><label>5k in <span id="targetTimeDown"></span>m:<input type="text" id="target5kpaceDown"
                     name="target5kpaceDown" /></label></div>
+        <input id="hidden-text" type="input" />
+        <div class="loader"></div>
     </fieldset>
     <script>
-        const input = document.getElementById("pace");
-        input.addEventListener("input", function (event) {
-            const pace = input.value;
-            let calc = new PaceCalc(pace);
+        window.onload = function () {
+            const input = document.getElementById("pace");
+            input.addEventListener("input", function (event) {
+                const pace = input.value;
+                let calc = new PaceCalc(pace);
 
-            // document.getElementById("avgpacemi").value = calc.MinutesPerMileOriginal;
-            document.getElementById("avgpacekm").value = calc.MinutesPerKilometerFormatted;
-            document.getElementById("total5k").value = calc.Estimated5KTotalTimeFormatted + " / " + calc.Estimated10TotalTimeFormatted;
+                // document.getElementById("avgpacemi").value = calc.MinutesPerMileOriginal;
+                document.getElementById("avgpacekm").value = calc.MinutesPerKilometerFormatted;
+                document.getElementById("total5k").value = calc.Estimated5KTotalTimeFormatted + " / " + calc.Estimated10TotalTimeFormatted;
 
-            const TargetMinutesUp = PaceCalc.RoundUpToNearest(calc.Estimated5KTotalTimeMinutesDecimal, 0.5);
-            const TargetMinutesDown = PaceCalc.RoundDownToNearest(calc.Estimated5KTotalTimeMinutesDecimal, 0.5);
+                const TargetMinutesUp = PaceCalc.RoundUpToNearest(calc.Estimated5KTotalTimeMinutesDecimal, 0.5);
+                const TargetMinutesDown = PaceCalc.RoundDownToNearest(calc.Estimated5KTotalTimeMinutesDecimal, 0.5);
 
-            document.getElementById("targetTimeUp").textContent = TargetMinutesUp;
-            document.getElementById("target5kpaceUp").value = PaceCalc.calcPaceFromTotalTime(TargetMinutesUp * 60, 5);
+                document.getElementById("targetTimeUp").textContent = TargetMinutesUp;
+                document.getElementById("target5kpaceUp").value = PaceCalc.calcPaceFromTotalTime(TargetMinutesUp * 60, 5);
 
-            document.getElementById("targetTimeDown").textContent = TargetMinutesDown;
-            document.getElementById("target5kpaceDown").value = PaceCalc.calcPaceFromTotalTime(TargetMinutesDown * 60, 5);
-        });
-        input.click();
+                document.getElementById("targetTimeDown").textContent = TargetMinutesDown;
+                document.getElementById("target5kpaceDown").value = PaceCalc.calcPaceFromTotalTime(TargetMinutesDown * 60, 5);
+            });
+
+            input.focus();
+            input.click();
+        };
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css-1.5.5.min.css" />
 </body>
