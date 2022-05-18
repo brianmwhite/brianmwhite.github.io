@@ -1,0 +1,104 @@
+/*** uncss> filename: https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css-1.5.5.min.css ***/
+label {
+    margin: 0 0 5px 0 !important;
+    padding: 0px !important;
+}
+
+label {
+    width: 150px;
+    font-size: x-large;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input,
+body {
+    font: normal 400 normal 1.125rem/1.85625rem system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+fieldset label {
+    display: block
+}
+
+input {
+    border-radius: 3.6px;
+    display: inline-block;
+    padding: 0.61875rem
+}
+
+input,
+label {
+    margin-right: 0.225rem
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.7875rem
+}
+
+label>input {
+    margin-bottom: 0
+}
+
+input {
+    margin-bottom: 1.125rem
+}
+
+input[type="text"],
+input[type="number"] {
+    border: 1px solid #595959;
+    padding: 0.3375rem 0.39375rem
+}
+
+* {
+    border: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: border-box;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    vertical-align: baseline
+}
+
+html,
+body {
+    width: 100%
+}
+
+html {
+    height: 100%
+}
+
+body {
+    background: #fff;
+    color: #1a1919;
+    padding: 36px
+}
+
+fieldset {
+    margin-bottom: 1.85625rem
+}
+
+@media (max-width:767px) {
+    body {
+        padding: 18px 0
+    }
+
+    input {
+        min-width: 0
+    }
+
+    fieldset {
+        min-width: 0
+    }
+
+    fieldset * {
+        flex-grow: 1;
+        page-break-before: auto
+    }
+}
