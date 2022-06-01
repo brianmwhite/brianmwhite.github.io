@@ -12,15 +12,13 @@
 <body>
     <link rel="stylesheet" href="./styles.css" />
     <fieldset>
-        <div><label>Pace:<input type="number" inputmode="decimal" id="pace" name="pace"
+        <div><label>Pace[min/mi]:<input type="number" inputmode="decimal" id="pace" name="pace"
                     pattern="^[0-9]+(?:\.[0-9]{2})?$" autofocus /></label></div>
-        <!-- <div><label>Avg. Pace/MI:<input type="text" id="avgpacemi" name="avgpacemi" /></label></div> -->
-        <div><label>Avg. Pace/KM:<input type="text" id="avgpacekm" name="avgpacekm" /></label></div>
+        <div><label>Pace[min/km]:<input type="text" id="avgpacekm" name="avgpacekm" /></label></div>
         <div><label>5K / 10k Total:<input type="text" id="total5k" name="total5k" /></label></div>
-        <!-- <div><label>10K Total:<input type="text" id="total10k" name="total10k" /></label></div> -->
-        <div><label>5k in <span id="targetTimeUp"></span>m:<input type="text" id="target5kpaceUp"
+        <div><label>5K in <span id="targetTimeUp"></span>min:<input type="text" id="target5kpaceUp"
                     name="target5kpaceDown" /></label></div>
-        <div><label>5k in <span id="targetTimeDown"></span>m:<input type="text" id="target5kpaceDown"
+        <div><label>5K in <span id="targetTimeDown"></span>min:<input type="text" id="target5kpaceDown"
                     name="target5kpaceDown" /></label></div>
     </fieldset>
     <script type="text/javascript" src="./calc.js"></script>
