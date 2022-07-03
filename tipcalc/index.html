@@ -23,6 +23,7 @@
         <table id="tipCalcResultsTable">
             <thead>
                 <tr>
+                    <th>~</th>
                     <th>Tip</th>
                     <th>Total</th>
                     <th>Percent</th>
@@ -34,16 +35,18 @@
     </fieldset>
     <script type="text/javascript" src="./tipcalc.js"></script>
     <script>
-        function insertTipCalcRow(tableBody, amount, targetPct, nearest) {
+        function insertTipCalcRow(tableBody, amount, targetPct, nearest, icon) {
             let calc = new TipCalc(amount);
             json = calc.calculateTip(targetPct, nearest);
 
             let newRow = tableBody.insertRow();
 
+            let nearestCol = newRow.insertCell(-1);
             let tipCol = newRow.insertCell(-1);
             let totalCol = newRow.insertCell(-1);
             let pctCol = newRow.insertCell(-1);
 
+            nearestCol.innerHTML = icon;
             tipCol.innerHTML = "$" + json.tip.toFixed(2);
             totalCol.innerHTML = "$" + json.totalAmount.toFixed(2);
             pctCol.innerHTML = json.actualPercent.toFixed(1) + "%";
@@ -59,9 +62,9 @@
             tableBody.innerHTML = "";
 
             if (amount != "") {
-                insertTipCalcRow(tableBody, amount, targetPct, 5);
-                insertTipCalcRow(tableBody, amount, targetPct, 1);
-                insertTipCalcRow(tableBody, amount, targetPct, 0);
+                insertTipCalcRow(tableBody, amount, targetPct, 5, "⑤");
+                insertTipCalcRow(tableBody, amount, targetPct, 1, "①");
+                insertTipCalcRow(tableBody, amount, targetPct, 0, "");
             }
 
         }
