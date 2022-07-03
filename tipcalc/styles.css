@@ -1,0 +1,86 @@
+* {
+    border: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: border-box;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+body,
+input,
+th,
+td {
+    font: normal 400 normal 1.125rem/1.85625rem system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: white;
+    color: black;
+    padding: 36px;
+}
+
+input {
+    border-radius: 3.6px;
+    display: inline-block;
+    margin-bottom: 0;
+    border: 1px solid #595959;
+    padding: 0.3375rem 0.39375rem;
+}
+
+label {
+    display: inline-block;
+    margin: 0 0 5px 0;
+    font-size: x-large;
+}
+
+label,
+input {
+    width: 268px;
+}
+
+
+@media (max-width:767px) {
+    body {
+        padding: 18px 0;
+    }
+
+    input {
+        min-width: 0;
+    }
+
+    fieldset {
+        min-width: 0;
+    }
+
+    fieldset * {
+        flex-grow: 1;
+        page-break-before: auto;
+    }
+}
+
+td,
+th {
+    min-width: 90px;
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+table {
+    margin-top: 5px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+thead th {
+    font-weight: bold;
+}

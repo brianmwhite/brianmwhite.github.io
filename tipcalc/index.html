@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <title>TipCalc</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="./styles.css" />
+    <fieldset>
+        <div><label>Amount:<input type="number" inputmode="decimal" id="amount" name="amount"
+                    pattern="^[0-9]+(?:\.[0-9]{2})?$" autofocus /></label></div>
+        <div>
+            <label>Target %:<input type="text" id="targetPercent" name="targetPercent" value="20" />
+        </div>
+        </label>
+        </div>
+        <table id="tipCalcResultsTable">
+            <thead>
+                <tr>
+                    <th>Tip</th>
+                    <th>Total</th>
+                    <th>Percent</th>
+                </tr>
+            </thead>
+            <tbody id="tipCalcResultsBody">
+            </tbody>
+        </table>
+    </fieldset>
+    <script type="text/javascript" src="./tipcalc.js"></script>
+    <script>
+        function insertTipCalcRow(tableBody, amount, targetPct, nearest) {
+            let calc = new TipCalc(amount);
+            json = calc.calculateTip(targetPct, nearest);
+
+            let newRow = tableBody.insertRow();
+
+            let tipCol = newRow.insertCell(-1);
+            let totalCol = newRow.insertCell(-1);
+            let pctCol = newRow.insertCell(-1);
+
+            tipCol.innerHTML = "$" + json.tip.toFixed(2);
+            totalCol.innerHTML = "$" + json.totalAmount.toFixed(2);
+            pctCol.innerHTML = json.actualPercent.toFixed(1) + "%";
+        }
+        function recalculateTip() {
+            const input = document.getElementById("amount");
+            const targetPctInput = document.getElementById("targetPercent");
+
+            const amount = input.value;
+            const targetPct = targetPctInput.value;
+
+            let tableBody = document.getElementById("tipCalcResultsBody");
+            tableBody.innerHTML = "";
+
+            if (amount != "") {
+                insertTipCalcRow(tableBody, amount, targetPct, 5);
+                insertTipCalcRow(tableBody, amount, targetPct, 1);
+                insertTipCalcRow(tableBody, amount, targetPct, 0);
+            }
+
+        }
+        window.onload = function () {
+            const input = document.getElementById("amount");
+            const targetPctInput = document.getElementById("targetPercent");
+
+            input.addEventListener("input", recalculateTip);
+            targetPctInput.addEventListener("input", recalculateTip);
+
+            input.focus();
+            input.click();
+        };
+    </script>
+</body>
+
+</html>
