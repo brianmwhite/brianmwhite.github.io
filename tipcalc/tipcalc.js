@@ -54,7 +54,7 @@ class TipCalc {
         result.actualPercent = this.ActualPercent;
         return result;
     }
-    calculateTip(percent, nearest = 0) {
+    calculateTip(percent, nearest = 0, roundTotal = false) {
         let floatPercent = percent / 100;
         this._TargetPercent = percent;
         this._Nearest = nearest;
@@ -66,6 +66,13 @@ class TipCalc {
         else {
             tip = this.roundToTwo(tip);
         }
+        
+        if (roundTotal == true) {
+            let newTotal = this._OriginalTotal + tip;
+            newTotal = Math.ceil(newTotal);
+            tip = newTotal - this._OriginalTotal;
+        }
+        
         this._TipAmount = tip;
         this._ActualPercent = tip / this._OriginalTotal;
         return this.createResultJson();
