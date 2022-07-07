@@ -1,6 +1,6 @@
 {
     "name": "TipCalc",
-    "short_name": "TC",
+    "short_name": "TipCalc",
     "description": "tip calculator",
     "scope": "/tipcalc/",
     "start_url": "/tipcalc/",
