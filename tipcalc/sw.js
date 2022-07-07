@@ -1,6 +1,6 @@
 var GHPATH = '/tipcalc';
 var APP_PREFIX = 'brianmwhitetipcalc_';
-var VERSION = 'version_00';
+var VERSION = 'version_01';
 var URLS = [    
   '${GHPATH}/',
   '${GHPATH}/styles.css',
