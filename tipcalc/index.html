@@ -14,12 +14,17 @@
 <body>
     <link rel="stylesheet" href="./styles.css" />
     <fieldset>
-        <div><label for="amount">Amount:<input type="search" inputmode="decimal" id="amount" name="amount"
-                    pattern="^[0-9]+(?:\.[0-9]{2})?$" autofocus /></label></div>
         <div>
-            <label for="targetPercent">Target %:<input type="search" id="targetPercent" inputmode="decimal" name="targetPercent" value="20"
-                    pattern="^[0-9]+(?:\.[0-9]{2})?$" />
+            <label for="amount">Amount:
+                <input type="number" inputmode="decimal" id="amount" name="amount" pattern="^[0-9]+(?:\.[0-9]{2})?$" autofocus />
             </label>
+            <button class="buttonType" type="reset" id="resetAmount" onclick="resetInput('amount')">&times;</button>
+        </div>
+        <div>
+            <label for="targetPercent">Target %:
+                <input type="number" id="targetPercent" inputmode="decimal" name="targetPercent" value="20" pattern="^[0-9]+(?:\.[0-9]{2})?$" />
+            </label>
+            <button class="buttonType" type="reset" id="resetAmount" onclick="resetInput('targetPercent')">&times;</button>
         </div>
         <div id="roundTotalSection">
             <label for="optionRoundTip" class="radio">Round Tip</label>
@@ -48,6 +53,11 @@
           {scope: '/tipcalc/'}
         )
       }
+        function resetInput(inputId) {
+            const input = document.getElementById(inputId);
+            input.value = "";
+            input.focus();
+        }
         function insertTipCalcRow(tableBody, amount, targetPct, nearest, icon, round) {
             let calc = new TipCalc(amount);
             json = calc.calculateTip(targetPct, nearest, round);
@@ -94,6 +104,7 @@
             document.getElementById("targetPercent").addEventListener("input", recalculateTip);
             document.getElementById("optionRoundTotal").addEventListener("change", recalculateTip);
             document.getElementById("optionRoundTip").addEventListener("change", recalculateTip);
+
         };
     </script>
 </body>
