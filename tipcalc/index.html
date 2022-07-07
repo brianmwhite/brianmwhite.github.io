@@ -85,7 +85,8 @@
             const optionRoundValue = roundOptionsInputs.value;
 
             clearTable();
-
+            
+            let tableBody = document.getElementById("tipCalcResultsBody");
             if (amount != "") {
                 if (optionRoundValue == "roundTotal") {
                     insertTipCalcRow(tableBody, amount, targetPct, 5, "⑤", true);
