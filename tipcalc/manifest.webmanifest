@@ -1,0 +1,17 @@
+{
+    "name": "TipCalc",
+    "short_name": "TC",
+    "description": "tip calculator",
+    "scope": "/tipcalc/",
+    "start_url": "/tipcalc/",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "display": "standalone", 
+    "icons": [
+        {
+          "src": "/tipcalc/apple-touch-icon.png",
+          "type": "image/png",
+          "sizes": "700x700"
+        }
+    ]
+  }
