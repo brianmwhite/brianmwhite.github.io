@@ -51,6 +51,14 @@ input[type='number'] {
 }
 
 
+label.radio {
+    width: fit-content;
+}
+
+div#roundTotalSection input[type='radio'] {
+    margin-right: 10px;
+}
+
 @media (max-width:767px) {
     body {
         padding: 18px 0;

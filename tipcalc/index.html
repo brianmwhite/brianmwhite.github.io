@@ -12,17 +12,18 @@
 <body>
     <link rel="stylesheet" href="./styles.css" />
     <fieldset>
-        <div><label>Amount:<input type="number" inputmode="decimal" id="amount" name="amount"
+        <div><label for="amount">Amount:<input type="number" inputmode="decimal" id="amount" name="amount"
                     pattern="^[0-9]+(?:\.[0-9]{2})?$" autofocus /></label></div>
         <div>
-            <label>Target %:<input type="number" id="targetPercent" inputmode="decimal" name="targetPercent" value="20"
+            <label for="targetPercent">Target %:<input type="number" id="targetPercent" inputmode="decimal" name="targetPercent" value="20"
                     pattern="^[0-9]+(?:\.[0-9]{2})?$" />
             </label>
         </div>
-        <div id="roundTotalSection">    
-            <label>Round Total:
-                <input type="checkbox" id="optionRoundTotal">
-            </label>
+        <div id="roundTotalSection">
+            <label for="optionRoundTip" class="radio">Round Tip</label>
+            <input type="radio" id="optionRoundTip" name="roundOptions" value="roundTip" checked /> 
+            <label for="optionRoundTotal" class="radio">Round Total</label>
+            <input type="radio" id="optionRoundTotal" name="roundOptions" value="roundTotal" /> 
         </div>
         <table id="tipCalcResultsTable">
             <thead>
@@ -58,17 +59,17 @@
         function recalculateTip() {
             const input = document.getElementById("amount");
             const targetPctInput = document.getElementById("targetPercent");
-            const optionRoundTotalInput = document.getElementById("optionRoundTotal");
+            const roundOptionsInputs = document.querySelector('input[type=radio][name=roundOptions]:checked');
 
             const amount = input.value;
             const targetPct = targetPctInput.value;
-            const optionRoundTotal = optionRoundTotalInput.value;
+            const optionRoundValue = roundOptionsInputs.value;
 
             let tableBody = document.getElementById("tipCalcResultsBody");
             tableBody.innerHTML = "";
 
             if (amount != "") {
-                if (optionRoundTotalInput.checked == true) {
+                if (optionRoundValue == "roundTotal") {
                     insertTipCalcRow(tableBody, amount, targetPct, 5, "⑤", true);
                     insertTipCalcRow(tableBody, amount, targetPct, 0, "①", true);
                     insertTipCalcRow(tableBody, amount, targetPct, 0, "", false);
@@ -84,6 +85,8 @@
             document.getElementById("amount").addEventListener("input", recalculateTip);
             document.getElementById("targetPercent").addEventListener("input", recalculateTip);
             document.getElementById("optionRoundTotal").addEventListener("change", recalculateTip);
+            document.getElementById("optionRoundTip").addEventListener("change", recalculateTip);
+
         };
     </script>
 </body>
