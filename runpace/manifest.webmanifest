@@ -1,0 +1,17 @@
+{
+  "name": "RunPace",
+  "short_name": "RunPace",
+  "description": "run pace calculator",
+  "scope": "/runpace/",
+  "start_url": "/runpace/",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/runpace/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "700x700"
+    }
+  ]
+}
