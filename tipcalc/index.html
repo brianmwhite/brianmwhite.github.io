@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="canonical" href="https://www.thirdember.com/tipcalc/" />
-    <link rel="manifest" href="/tipcalc/manifest.webmanifest">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <script type="module" src="./main.js"></script>
     <title>TipCalc</title>
 </head>
 
@@ -48,14 +49,8 @@
             </tbody>
         </table>
     </fieldset>
-    <script type="text/javascript" src="./tipcalc.js"></script>
+    <script type="text/javascript" src="tipcalc.js"></script>
     <script>
-        if (navigator.serviceWorker) {
-            navigator.serviceWorker.register(
-                '/tipcalc/sw.js',
-                { scope: '/tipcalc/' }
-            )
-        }
         function resetInput(inputId) {
             const input = document.getElementById(inputId);
             input.value = "";
