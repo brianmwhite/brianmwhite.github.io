@@ -60,7 +60,7 @@ class TipCalc {
         this._Nearest = nearest;
         let tip = 0;
         tip = this._OriginalTotal * floatPercent;
-        
+
         if (roundTotal == true) {
             let newTotal = this._OriginalTotal + tip;
             newTotal = Math.ceil(newTotal);
@@ -70,13 +70,13 @@ class TipCalc {
             }
 
             tip = newTotal - this._OriginalTotal;
-            
+
         } else if (nearest > 0) {
             tip = Math.ceil(tip / nearest) * nearest;
         }
 
         tip = this.roundToTwo(tip);
-        
+
         this._TipAmount = tip;
         this._ActualPercent = tip / this._OriginalTotal;
         return this.createResultJson();
