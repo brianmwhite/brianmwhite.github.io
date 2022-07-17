@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
     <link rel="canonical" href="https://www.thirdember.com/runpace/" />
-    <link rel="manifest" href="/runpace/manifest.webmanifest">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <script type="module" src="./main.js"></script>
     <title>RunCalc</title>
 </head>
 
@@ -25,12 +26,6 @@
     </fieldset>
     <script type="text/javascript" src="./calc.js"></script>
     <script>
-        if (navigator.serviceWorker) {
-            navigator.serviceWorker.register(
-                '/runpace/sw.js',
-                { scope: '/runpace/' }
-            )
-        }
         window.onload = function () {
             const input = document.getElementById("pace");
             input.addEventListener("input", function (event) {
