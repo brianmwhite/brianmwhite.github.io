@@ -42,7 +42,7 @@ label {
 
 label,
 input[type='number'] {
-    width: 237px;
+    width: 258px;
 }
 
 .buttonType {
@@ -141,7 +141,7 @@ th:first-child {
 
 td,
 th {
-    min-width: 55px;
+    min-width: 60px;
     padding: 5px;
     border: 1px solid black;
     text-align: center;

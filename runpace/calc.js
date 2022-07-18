@@ -75,7 +75,11 @@ class PaceCalc {
             return passednumber;
         }
         else {
-            return Math.ceil(passednumber / roundto) * roundto;
+            let x = passednumber / roundto;
+            if (Number.isInteger(x)) {
+                x = x + .1;
+            }
+            return Math.ceil(x) * roundto;
         }
     }
     static RoundDownToNearest(passednumber, roundto) {
@@ -83,7 +87,11 @@ class PaceCalc {
             return passednumber;
         }
         else {
-            return Math.floor(passednumber / roundto) * roundto;
+            let x = passednumber / roundto;
+            if (Number.isInteger(x)) {
+                x = x - .1;
+            }
+            return Math.floor(x) * roundto;
         }
     }
 }
