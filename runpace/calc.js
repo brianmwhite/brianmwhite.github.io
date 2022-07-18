@@ -1,6 +1,6 @@
 class PaceCalc {
     constructor(MinutesPerMileAsHMS) {
-        this._InputPaceHMS = MinutesPerMileAsHMS;
+        this._InputPaceHMS = MinutesPerMileAsHMS.replace(":", ".");
         this._SecondsPerMile = PaceCalc.msStringToSeconds(MinutesPerMileAsHMS);
         this._SecondsPerKilometer = this._SecondsPerMile / PaceCalc.mileToKMConversionConstant;
     }
@@ -8,11 +8,13 @@ class PaceCalc {
         return PaceCalc.formatDurationFromSeconds(this._SecondsPerKilometer);
     }
     get MinutesPerMileOriginal() {
-        return this._InputPaceHMS.replace('.', ':');
+        return parseFloat(this._InputPaceHMS).toFixed(2).replace('.', ':');
     }
     get MinutesPerMileFormatted() {
         return PaceCalc.formatDurationFromSeconds(this._SecondsPerMile);
-        ;
+    }
+    get SecondsPerMile() {
+        return this._SecondsPerMile;
     }
     get Estimated5KTotalTimeFormatted() {
         return PaceCalc.formatDurationFromSeconds(this._SecondsPerKilometer * 5);
@@ -22,6 +24,12 @@ class PaceCalc {
     }
     get Estimated10TotalTimeFormatted() {
         return PaceCalc.formatDurationFromSeconds(this._SecondsPerKilometer * 10);
+    }
+    get MilesPerHour() {
+        return 60 / (this._SecondsPerMile / 60);
+    }
+    get KmPerHour() {
+        return 60 / (this._SecondsPerKilometer / 60);
     }
     static getNumber(stringValue) {
         const num = parseInt(stringValue);

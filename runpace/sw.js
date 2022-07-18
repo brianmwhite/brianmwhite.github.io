@@ -1,4 +1,4 @@
-const cacheName = 'runpace-v1.01';
+const cacheName = 'runpace-v2.01';
 
 const precacheResources = [
   './',

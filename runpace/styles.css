@@ -10,7 +10,9 @@
 }
 
 body,
-input {
+input,
+th,
+td {
     font: normal 400 normal 1.125rem/1.85625rem system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -35,8 +37,74 @@ input {
 label {
     display: inline-block;
     margin: 0 0 5px 0;
-    width: 150px;
     font-size: x-large;
+}
+
+label,
+input[type='number'] {
+    width: 237px;
+}
+
+.buttonType {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 10px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    margin-top: -2px;
+}
+
+.buttonType:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.buttonType:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+}
+
+.buttonType:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+}
+
+.buttonType:focus {
+    outline: 1px transparent;
+}
+
+.buttonType:before {
+    display: none;
+}
+
+.buttonType:-webkit-details-marker {
+    display: none;
+}
+
+label.radio {
+    width: fit-content;
 }
 
 
@@ -57,4 +125,47 @@ label {
         flex-grow: 1;
         page-break-before: auto;
     }
+}
+
+table {
+    margin-top: 5px;
+}
+
+td,
+th:first-child {
+    min-width: 65px;
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+td,
+th {
+    min-width: 55px;
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: normal;
+}
+
+tbody tr:nth-child(even) td {
+    background-color: lightgray;
+    font-weight: bold;
+}
+
+/* thead tr th:first-child,
+tbody tr td:first-child {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    word-break: break-all;
+} */
+
+thead th {
+    font-weight: bold;
+    line-height: normal;
+}
+
+span.secondary {
+    font-size: .75rem;
 }
