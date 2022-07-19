@@ -1,7 +1,6 @@
 class PaceCalc {
-    constructor(MinutesPerMileAsHMS) {
-        this._InputPaceHMS = MinutesPerMileAsHMS.replace(":", ".");
-        this._SecondsPerMile = PaceCalc.msStringToSeconds(MinutesPerMileAsHMS);
+    constructor(SecondsPerMile) {
+        this._SecondsPerMile = SecondsPerMile;
         this._SecondsPerKilometer = this._SecondsPerMile / PaceCalc.mileToKMConversionConstant;
     }
     get MinutesPerKilometerFormatted() {
@@ -15,6 +14,9 @@ class PaceCalc {
     }
     get SecondsPerMile() {
         return this._SecondsPerMile;
+    }
+    get SecondsPerKilometer() {
+        return this._SecondsPerKilometer;
     }
     get Estimated5KTotalTimeFormatted() {
         return PaceCalc.formatDurationFromSeconds(this._SecondsPerKilometer * 5);

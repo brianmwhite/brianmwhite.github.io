@@ -54,7 +54,7 @@
             let kmHourCol = newRow.insertCell(-1);
 
             total5k10kCol.innerHTML = calc.Estimated5KTotalTimeFormatted + "<br /><span class='secondary'>" + calc.Estimated10TotalTimeFormatted + "</span>";
-            minMiCol.innerHTML = calc.MinutesPerMileOriginal;
+            minMiCol.innerHTML = calc.MinutesPerMileFormatted;
             minKmCol.innerHTML = calc.MinutesPerKilometerFormatted;
             miHourCol.innerHTML = calc.MilesPerHour.toFixed(1);
             kmHourCol.innerHTML = calc.KmPerHour.toFixed(1);
@@ -65,16 +65,23 @@
 
             let tableBody = document.getElementById("runPaceResultsBody");
             if (input != "") {
-                let calc = new PaceCalc(input);
+                let originalValue = input;
+                let secondsPerMile = PaceCalc.msStringToSeconds(input);
+                let calc = new PaceCalc(secondsPerMile);
 
-                const TargetSecondsUp = PaceCalc.RoundUpToNearest(calc.SecondsPerMile / 60, 0.5) * 60;
-                const TargetSecondsDown = PaceCalc.RoundDownToNearest(calc.SecondsPerMile / 60, 0.5) * 60;
-                const TargetMinutesUp = PaceCalc.formatDurationFromSeconds(TargetSecondsUp);
-                const TargetMinutesDown = PaceCalc.formatDurationFromSeconds(TargetSecondsDown);
+                // const TargetSecondsUp = PaceCalc.RoundUpToNearest(secondsPerMile / 60, 0.5) * 60;
+                // const TargetSecondsDown = PaceCalc.RoundDownToNearest(secondsPerMile / 60, 0.5) * 60;
 
-                insertRunPaceRow(tableBody, new PaceCalc(TargetMinutesDown));
+                const TargetTotal5KMinutes = (calc.SecondsPerKilometer / 60) * 5;
+
+                const TargetTotalMinutesUp = PaceCalc.RoundUpToNearest(TargetTotal5KMinutes, 0.5);
+                const TargetTotalMinutesDown = PaceCalc.RoundDownToNearest(TargetTotal5KMinutes, 0.5);
+                const TargetTotalPaceUp = (TargetTotalMinutesUp * 60) / 5;
+                const TargetTotalPaceDown = (TargetTotalMinutesDown * 60) / 5;
+
+                insertRunPaceRow(tableBody, new PaceCalc(TargetTotalPaceDown * PaceCalc.mileToKMConversionConstant));
                 insertRunPaceRow(tableBody, calc);
-                insertRunPaceRow(tableBody, new PaceCalc(TargetMinutesUp));
+                insertRunPaceRow(tableBody, new PaceCalc(TargetTotalPaceUp * PaceCalc.mileToKMConversionConstant));
             }
         }
         function clearTable() {
