@@ -22,6 +22,12 @@
             </label>
             <button class="buttonType" type="reset" id="resetAmount" onclick="resetInput('pace')">&times;</button>
         </div>
+        <div id="roundSection">
+            <label for="optionRoundTotal" class="radio">Round Total</label>
+            <input type="radio" id="optionRoundTotal" name="roundOptions" value="roundTotal" checked />
+            <label for="optionRoundPace" class="radio">Round Pace</label>
+            <input type="radio" id="optionRoundPace" name="roundOptions" value="roundPace" />
+        </div>
         <table id="runPaceResultsTable">
             <thead>
                 <tr>
@@ -69,19 +75,28 @@
                 let secondsPerMile = PaceCalc.msStringToSeconds(input);
                 let calc = new PaceCalc(secondsPerMile);
 
-                // const TargetSecondsUp = PaceCalc.RoundUpToNearest(secondsPerMile / 60, 0.5) * 60;
-                // const TargetSecondsDown = PaceCalc.RoundDownToNearest(secondsPerMile / 60, 0.5) * 60;
+                const roundOptionsInputs = document.querySelector('input[type=radio][name=roundOptions]:checked');
+                const optionRoundValue = roundOptionsInputs.value;
 
-                const TargetTotal5KMinutes = (calc.SecondsPerKilometer / 60) * 5;
+                let SecondsPaceUp = 0;
+                let SecondsPaceDown = 0;
 
-                const TargetTotalMinutesUp = PaceCalc.RoundUpToNearest(TargetTotal5KMinutes, 0.5);
-                const TargetTotalMinutesDown = PaceCalc.RoundDownToNearest(TargetTotal5KMinutes, 0.5);
-                const TargetTotalPaceUp = (TargetTotalMinutesUp * 60) / 5;
-                const TargetTotalPaceDown = (TargetTotalMinutesDown * 60) / 5;
+                if (optionRoundValue == "roundTotal") {
+                    const TargetTotal5KMinutes = (calc.SecondsPerKilometer / 60) * 5;
+                    const TargetTotalPaceDown = (PaceCalc.RoundDownToNearest(TargetTotal5KMinutes, 0.5) * 60) / 5;
+                    const TargetTotalPaceUp = (PaceCalc.RoundUpToNearest(TargetTotal5KMinutes, 0.5) * 60) / 5;
 
-                insertRunPaceRow(tableBody, new PaceCalc(TargetTotalPaceDown * PaceCalc.mileToKMConversionConstant));
+                    SecondsPaceDown = TargetTotalPaceDown * PaceCalc.mileToKMConversionConstant;
+                    SecondsPaceUp = TargetTotalPaceUp * PaceCalc.mileToKMConversionConstant;
+                }
+                else {
+                    SecondsPaceDown = PaceCalc.RoundDownToNearest(secondsPerMile / 60, 0.5) * 60;
+                    SecondsPaceUp = PaceCalc.RoundUpToNearest(secondsPerMile / 60, 0.5) * 60;
+                }
+
+                insertRunPaceRow(tableBody, new PaceCalc(SecondsPaceDown));
                 insertRunPaceRow(tableBody, calc);
-                insertRunPaceRow(tableBody, new PaceCalc(TargetTotalPaceUp * PaceCalc.mileToKMConversionConstant));
+                insertRunPaceRow(tableBody, new PaceCalc(SecondsPaceUp));
             }
         }
         function clearTable() {
@@ -90,6 +105,8 @@
         }
         window.onload = function () {
             document.getElementById("pace").addEventListener("input", recalculatePace);
+            document.getElementById("optionRoundTotal").addEventListener("change", recalculatePace);
+            document.getElementById("optionRoundPace").addEventListener("change", recalculatePace);
         };
     </script>
 </body>

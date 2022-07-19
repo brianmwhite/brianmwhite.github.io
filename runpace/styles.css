@@ -45,6 +45,10 @@ input[type='number'] {
     width: 258px;
 }
 
+div#roundSection label {
+    font-size: medium;
+}
+
 .buttonType {
     appearance: none;
     background-color: #FAFBFC;
