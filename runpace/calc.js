@@ -57,7 +57,7 @@ class PaceCalc {
         // 8.36666667
         const minutesPortion = Math.floor(minutesDecimal);
         // 8
-        const secondsDecimal = (minutesDecimal - minutesPortion) * 60;
+        const secondsDecimal = (Math.round((minutesDecimal - minutesPortion) * 1e8) / 1e8) * 60;
         // 22.000002
         const secondsPortion = Math.floor(secondsDecimal);
         // 22
