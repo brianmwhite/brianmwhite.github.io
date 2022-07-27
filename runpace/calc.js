@@ -55,11 +55,11 @@ class PaceCalc {
         // 502 seconds
         const minutesDecimal = seconds / 60;
         // 8.36666667
-        const minutesPortion = Math.floor(minutesDecimal);
+        const minutesPortion = PaceCalc.precisionRoundMod(Math.floor(minutesDecimal), 0);
         // 8
-        const secondsDecimal = (Math.round((minutesDecimal - minutesPortion) * 1e8) / 1e8) * 60;
+        const secondsDecimal = (minutesDecimal - minutesPortion) * 60;
         // 22.000002
-        const secondsPortion = Math.floor(secondsDecimal);
+        const secondsPortion = PaceCalc.precisionRoundMod(secondsDecimal, 0);
         // 22
         // let timeString = new Date(seconds * 1000).toISOString().substring(11, 11 + 8);
         // timeString = timeString.replace(/^0(?:0:0?)?/, '');
@@ -95,6 +95,11 @@ class PaceCalc {
             }
             return Math.floor(x) * roundto;
         }
+    }
+    static precisionRoundMod(number, precision) {
+        let factor = Math.pow(10, precision);
+        let n = precision < 0 ? number : 0.01 / factor + number;
+        return Math.round(n * factor) / factor;
     }
 }
 PaceCalc.mileToKMConversionConstant = 1.609344;
