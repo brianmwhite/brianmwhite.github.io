@@ -1,0 +1,24 @@
+{
+    "subject": "acct:brianwhite@hachyderm.io",
+    "aliases": [
+        "https://hachyderm.io/@brianwhite",
+        "https://hachyderm.io/users/brianwhite",
+        "brianwhite@hachyderm.io"
+    ],
+    "links": [
+        {
+            "rel": "http://webfinger.net/rel/profile-page",
+            "type": "text/html",
+            "href": "https://hachyderm.io/@brianwhite"
+        },
+        {
+            "rel": "self",
+            "type": "application/activity+json",
+            "href": "https://hachyderm.io/users/brianwhite"
+        },
+        {
+            "rel": "http://ostatus.org/schema/1.0/subscribe",
+            "template": "https://hachyderm.io/authorize_interaction?uri={uri}"
+        }
+    ]
+}
