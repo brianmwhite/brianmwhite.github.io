@@ -6,43 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-    <link rel="canonical" href="https://www.thirdember.com/runpace/" />
+    <link rel="canonical" href="https://www.thirdember.com/runpace/">
     <link rel="manifest" href="./manifest.webmanifest">
     <script type="module" src="./main.js"></script>
     <title>RunCalc</title>
 </head>
 
 <body>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css">
     <fieldset>
         <div>
             <label>Pace[min/mi]:
-                <input type="number" inputmode="decimal" id="pace" name="pace" pattern="^[0-9]+(?:\.[0-9]{2})?$"
-                    autofocus />
+                <input type="number" inputmode="decimal" id="pace" name="pace" autofocus>
             </label>
             <button class="buttonType" type="reset" id="resetAmount" onclick="resetInput('pace')">&times;</button>
         </div>
         <div id="roundSection">
             <label for="optionRoundTotal" class="radio">Round Total</label>
-            <input type="radio" id="optionRoundTotal" name="roundOptions" value="roundTotal" checked />
+            <input type="radio" id="optionRoundTotal" name="roundOptions" value="roundTotal" checked>
             <label for="optionRoundPace" class="radio">Round Pace</label>
-            <input type="radio" id="optionRoundPace" name="roundOptions" value="roundPace" />
+            <input type="radio" id="optionRoundPace" name="roundOptions" value="roundPace">
         </div>
         <table id="runPaceResultsTable">
             <thead>
                 <tr>
-                    <th>5K<br /><span class="secondary">10K</span></th>
-                    <th>min<br />/mi</th>
-                    <th>min<br />/km</th>
-                    <th>mi<br />/hr</th>
-                    <th>km<br />/hr</th>
+                    <th>5K<br><span class="secondary">10K</span></th>
+                    <th>min<br>/mi</th>
+                    <th>min<br>/km</th>
+                    <th>mi<br>/hr</th>
+                    <th>km<br>/hr</th>
                 </tr>
             </thead>
             <tbody id="runPaceResultsBody">
             </tbody>
         </table>
     </fieldset>
-    <script type="text/javascript" src="./calc.js"></script>
+    <script src="./calc.js"></script>
     <script>
         function resetInput(inputId) {
             const input = document.getElementById(inputId);

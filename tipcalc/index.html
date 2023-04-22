@@ -12,34 +12,32 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="manifest" href="./manifest.webmanifest">
-    <link rel="canonical" href="https://www.thirdember.com/tipcalc/" />
+    <link rel="canonical" href="https://www.thirdember.com/tipcalc/">
     <script type="module" src="./main.js"></script>
     <title>TipCalc</title>
 </head>
 
 <body>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css">
     <fieldset>
         <div>
             <label for="amount">Amount:
-                <input type="number" inputmode="decimal" id="amount" name="amount" pattern="^[0-9]+(?:\.[0-9]{2})?$"
-                    autofocus />
+                <input type="number" inputmode="decimal" id="amount" name="amount" autofocus>
             </label>
             <button class="buttonType" type="reset" id="resetAmount" onclick="resetInput('amount')">&times;</button>
         </div>
         <div>
             <label for="targetPercent">Target %:
-                <input type="number" id="targetPercent" inputmode="decimal" name="targetPercent" value="20"
-                    pattern="^[0-9]+(?:\.[0-9]{2})?$" />
+                <input type="number" id="targetPercent" inputmode="decimal" name="targetPercent" value="20">
             </label>
-            <button class="buttonType" type="reset" id="resetAmount"
+            <button class="buttonType" type="reset" id="resetAmountButton"
                 onclick="resetInput('targetPercent')">&times;</button>
         </div>
         <div id="roundTotalSection">
             <label for="optionRoundTip" class="radio">Round Tip</label>
-            <input type="radio" id="optionRoundTip" name="roundOptions" value="roundTip" checked />
+            <input type="radio" id="optionRoundTip" name="roundOptions" value="roundTip" checked>
             <label for="optionRoundTotal" class="radio">Round Total</label>
-            <input type="radio" id="optionRoundTotal" name="roundOptions" value="roundTotal" />
+            <input type="radio" id="optionRoundTotal" name="roundOptions" value="roundTotal">
         </div>
         <table id="tipCalcResultsTable">
             <thead>
@@ -54,7 +52,7 @@
             </tbody>
         </table>
     </fieldset>
-    <script type="text/javascript" src="./tipcalc.js"></script>
+    <script src="./tipcalc.js"></script>
     <script>
         function resetInput(inputId) {
             const input = document.getElementById(inputId);
