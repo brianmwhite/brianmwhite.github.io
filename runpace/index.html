@@ -40,6 +40,7 @@
             <tbody id="runPaceResultsBody">
             </tbody>
         </table>
+        <div id="swVersion"></div>
     </fieldset>
     <script src="./calc.js"></script>
     <script>
@@ -107,6 +108,12 @@
             document.getElementById("optionRoundTotal").addEventListener("change", recalculatePace);
             document.getElementById("optionRoundPace").addEventListener("change", recalculatePace);
         };
+        //check for message from service worker and display in the swVersion div
+        if (navigator.serviceWorker) {
+            navigator.serviceWorker.addEventListener('message', function (event) {
+                document.getElementById("swVersion").innerHTML = event.data.msg;
+            });
+        }
     </script>
 </body>
 

@@ -173,3 +173,7 @@ thead th {
 span.secondary {
     font-size: .75rem;
 }
+
+div#swVersion {
+    font-size: .25rem !important;
+}
