@@ -16,9 +16,11 @@
     <link rel="stylesheet" href="./styles.css">
     <fieldset>
         <div>
-            <label>Pace[min/mi]:
-                <input type="number" inputmode="decimal" id="pace" name="pace" autofocus>
-            </label>
+            <label for="pace" id="paceInputLabel">Pace[min/mi]:</label>
+
+            <button class="buttonType" type="button" id="togglePaceOrTotalInput" onclick="toggleInput()">~</button>
+            <input type="number" inputmode="decimal" id="pace" name="pace" autofocus>
+            <input type="hidden" id="optionPaceOrTotal" value="PACE" />
             <button class="buttonType" type="reset" id="resetAmount" onclick="resetInput('pace')">&times;</button>
         </div>
         <div id="roundSection">
@@ -50,6 +52,19 @@
             clearTable();
             input.focus();
         }
+        function toggleInput() {
+            let optionPaceOrTotal = document.getElementById("optionPaceOrTotal");
+            let paceInputLabel = document.getElementById("paceInputLabel");
+
+            if (optionPaceOrTotal.value == "PACE") {
+                optionPaceOrTotal.value = "TOTAL";
+                paceInputLabel.innerHTML = "Total[5K]:"
+            } else {
+                optionPaceOrTotal.value = "PACE";
+                paceInputLabel.innerHTML = "Pace[min/mi]:"
+            }
+            resetInput("pace");
+        }
         function insertRunPaceRow(tableBody, calc) {
             let newRow = tableBody.insertRow();
 
@@ -67,12 +82,20 @@
         }
         function recalculatePace() {
             const input = document.getElementById("pace").value;
+            const optionPaceOrTotal = document.getElementById("optionPaceOrTotal").value;
+
             clearTable();
 
             let tableBody = document.getElementById("runPaceResultsBody");
+            let secondsPerMile = 0;
             if (input != "") {
-                let originalValue = input;
-                let secondsPerMile = PaceCalc.msStringToSeconds(input);
+                if (optionPaceOrTotal == "PACE") {
+                    secondsPerMile = PaceCalc.msStringToSeconds(input);
+                }
+                else {
+                    secondsTotal = PaceCalc.msStringToSeconds(input);
+                    secondsPerMile = PaceCalc.calcPaceFromTotalTime(secondsTotal, 5);
+                }
                 let calc = new PaceCalc(secondsPerMile);
 
                 const roundOptionsInputs = document.querySelector('input[type=radio][name=roundOptions]:checked');

@@ -70,7 +70,7 @@ class PaceCalc {
     static calcPaceFromTotalTime(totalSeconds, km) {
         const secondsPerKM = totalSeconds / km;
         const secondsPerMile = secondsPerKM * this.mileToKMConversionConstant;
-        return this.formatDurationFromSeconds(secondsPerMile);
+        return secondsPerMile;
     }
     static RoundUpToNearest(passednumber, roundto) {
         if (roundto == 0) {

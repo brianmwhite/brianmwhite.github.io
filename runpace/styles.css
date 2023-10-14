@@ -40,9 +40,12 @@ label {
     font-size: x-large;
 }
 
-label,
+label#paceInputLabel {
+    display: block;
+}
+
 input[type='number'] {
-    width: 258px;
+    width: 213px;
 }
 
 div#roundSection label {
